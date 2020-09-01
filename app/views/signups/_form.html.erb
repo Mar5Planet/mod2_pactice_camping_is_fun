@@ -1,0 +1,19 @@
+<%if flash[:my_errors] %>
+    <% flash[:my_errors].each do |error| %>
+        <p> <%= error %> </p>
+    <% end %>
+ <% end %>
+
+<h1> Signup Form </h1>
+<%= form_for @signup do |f| %>
+    <p> <%= f.label :camper_id %> </p>
+    <p> <%= f.collection_select :camper_id, Camper.all, :id, :name %> </p>
+    
+    <p> <%= f.label :activity_id %> </p>
+    <p> <%= f.collection_select :activity_id, Activity.all, :id, :name %> </p>
+    
+    <p> <%= f.label :time %> </p>
+    <p> <%= f.text_field :time %></p>
+
+    <%= f.submit %>
+<% end %>
